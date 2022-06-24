@@ -24,6 +24,18 @@ RegEx is a useful tool for searching for a specific section of a string, and for
 
 ## Regex Components
 
+/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
+
+- Components breakdown.
+   - /^.....$/: the opening and closing slashes in JavaScript represent the Anchors.
+   - ([a-z0-9_\.-]+) is the first Grouping. Inside this grouping is a Character Set inside a Bracket Expression, telling the search to only search for specific characters. a-z and 0-9 are rangest, encompassing the alphabet and single digits respectively. In addition, it also searches for underscores, periods, and dashes. The "+" outside the brackets is a Quantifier that returns one or more characters before the next Grouping. 
+   - @ is a Grouping of a single character. In this case, it searches for many characters, then finds @, before searching for another grouping of characters. 
+   - ([\da-z\.-]+) is a Grouping with a Character Set inside it. This Set has the \d Class, which looks for any digit, an a-z range, includes "." and "-". The + tells it to look for one or more characters before the next Grouping. 
+   - \. As previously discussed, this code tells the RegEx to look for a single period. 
+   - ([a-z\.]{2,6}) Another Grouping, including a range of a-z and ".". Outside of the range, it includes a {n,m} Quantifier, telling it to look for a minimum of 2 and a maximum of 6 characters. 
+
+For further information, refer to the specific classes below.
+
 ### Anchors
  - Anchors define the start and the end of a string. 
     - ^: this character marks the beginning of the RegEx pattern. This pattern is case sensitive. However, in JavaScript, this is replaced by "/".
@@ -47,7 +59,7 @@ RegEx is a useful tool for searching for a specific section of a string, and for
     - \s: Specifies "space", or " ". 
     - \w: Returns a 'wordly' character, such as a letter in the Latin alphabet ("a", "b", "c", etc.), a digit, or an underscore. Non-Latin characters (such as cyrillic) are not returned. 
     - These classes can be reversed by capitalizing the letter. \D returns any character except a digit, \S any character except a space, etc. 
-    - .: "." returns any character except for a new line ("\n"). 
+    - .: Returns any character except for a new line ("\n"). Not to be confused with "\.", which returns "." 
 
 ### Flags
 - Flags are additional parameters that affect the search. In javascript, they would be inserted after the final "/". For example, /[ab]/i
